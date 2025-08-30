@@ -3,7 +3,10 @@ import mobileApi from './mobile-api/api';
 import webApi from './web-api/api';
 import { config } from '@/config';
 
-const enableThirdPartyApi = config.twitter.thirdPartyApi;
+const enableThirdPartyApi = config.twitter.thirdPartyApi && config.twitter.thirdPartyApi.includes('api.apidance.pro');
+if (enableThirdPartyApi && !config.twitter.thirdPartyApiKey) {
+    throw new ConfigNotFoundError('TWITTER_THIRD_PARTY_API_KEY is required when TWITTER_THIRD_PARTY_API contains api.apidance.pro');
+}
 const enableMobileApi = config.twitter.username && config.twitter.password;
 const enableWebApi = config.twitter.authToken;
 

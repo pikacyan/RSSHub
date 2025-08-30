@@ -372,6 +372,7 @@ export type Config = {
         phoneOrEmail?: string[];
         authToken?: string[];
         thirdPartyApi?: string;
+        thirdPartyApiKey?: string;
     };
     uestc: {
         bbsCookie?: string;
@@ -844,6 +845,7 @@ const calculateValue = () => {
             phoneOrEmail: envs.TWITTER_PHONE_OR_EMAIL?.split(','),
             authToken: envs.TWITTER_AUTH_TOKEN?.split(','),
             thirdPartyApi: envs.TWITTER_THIRD_PARTY_API,
+            thirdPartyApiKey: envs.TWITTER_THIRD_PARTY_API_KEY,
         },
         uestc: {
             bbsCookie: envs.UESTC_BBS_COOKIE,

@@ -229,9 +229,14 @@ export const paginationTweets = async (endpoint: string, userId: number | undefi
 
     const fetchData = async () => {
         if (config.twitter.thirdPartyApi && thirdPartySupportedAPI.includes(endpoint)) {
+            const headers: Record<string, string> = {};
+            if (config.twitter.thirdPartyApi.includes('api.apidance.pro') && config.twitter.thirdPartyApiKey) {
+                headers.apikey = config.twitter.thirdPartyApiKey;
+            }
             const { data } = await ofetch(`${config.twitter.thirdPartyApi}${gqlMap[endpoint]}`, {
                 method: 'GET',
                 params,
+                headers,
             });
             return data;
         }

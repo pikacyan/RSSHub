@@ -17,6 +17,11 @@ export const route: Route = {
                 name: 'TWITTER_THIRD_PARTY_API',
                 description: 'Please see above for details.',
             },
+            {
+                name: 'TWITTER_THIRD_PARTY_API_KEY',
+                description: 'API key for third-party API (required when TWITTER_THIRD_PARTY_API is api.apidance.pro)',
+                optional: true,
+            },
         ],
         requirePuppeteer: false,
         antiCrawler: false,

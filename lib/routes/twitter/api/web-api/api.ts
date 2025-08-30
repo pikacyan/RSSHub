@@ -25,10 +25,15 @@ const getUserData = (id) =>
 
         if (config.twitter.thirdPartyApi) {
             const endpoint = id.startsWith('+') ? gqlMap.UserByRestId : gqlMap.UserByScreenName;
+            const headers: Record<string, string> = {};
+            if (config.twitter.thirdPartyApi.includes('api.apidance.pro') && config.twitter.thirdPartyApiKey) {
+                headers.apikey = config.twitter.thirdPartyApiKey;
+            }
 
             return ofetch(`${config.twitter.thirdPartyApi}${endpoint}`, {
                 method: 'GET',
                 params,
+                headers,
             });
         }
 
